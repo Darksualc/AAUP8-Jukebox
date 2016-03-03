@@ -7,8 +7,11 @@ import java.lang.String;
 
 import static org.junit.Assert.*;
 
+import com.example.sw804f16.jukebox.MainActivity;
 import com.wrapper.spotify.Api;
 import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+
+import junit.framework.Assert;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -24,10 +27,17 @@ public class ConnectionTest {
     @Test
     public void is_Connected() throws Exception {
 
-        String clientId = "8d04022ead4444d0b005d171e5941922";
-        String clientSecret = "d9c1e3b5743b435e967c80e2784a528e";
-        String redirectUri = "";
-        String code = "";
+        //String clientId = "8d04022ead4444d0b005d171e5941922";
+        //String clientSecret = "d9c1e3b5743b435e967c80e2784a528e";
+
+        MainActivity main = new MainActivity();
+
+        Assert.assertTrue(main.connectionFlag);
+
+    }
+
+    protected void SetupTest(){
+        AuthenticationRequest result = new AuthenticationRequest();
 
     }
 }

@@ -21,16 +21,17 @@ import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 
-public class MainActivity extends AppCompatActivity {
+import junit.framework.Assert;
+
+public class MainActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
 
     // Replace with your client ID
     private static final String CLIENT_ID = "8d04022ead4444d0b005d171e5941922";
     // Replace with your redirect URI
-    private static final String REDIRECT_URI = "localhost:6666";
-
+    private static final String REDIRECT_URI = "www.google.com";
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
-
+    public static boolean connectionFlag = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         AuthenticationRequest request = builder.build();
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
+
+        if (request != null)
+        {
+            connectionFlag = true;
+        }
     }
 
     @Override
@@ -91,10 +97,9 @@ public class MainActivity extends AppCompatActivity {
                 Spotify.getPlayer(playerConfig, this, new Player.InitializationObserver() {
                     @Override
                     public void onInitialized(Player player) {
-                        mPlayer = player;
-                        //mPlayer.addConnectionStateCallback(MainActivity.this);
-                       // mPlayer.addPlayerNotificationCallback(MainActivity.this);
-                        mPlayer.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                        player.addConnectionStateCallback(MainActivity.this);
+                        player.addPlayerNotificationCallback(MainActivity.this);
+                        player.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
                     }
 
                     @Override
@@ -104,5 +109,57 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         }
+    }
+
+    @Override
+    public void onLoggedIn() {
+        Log.d("MainActivity", "User logged in");
+    }
+
+    @Override
+    public void onLoggedOut() {
+        Log.d("MainActivity", "User logged out");
+    }
+
+    @Override
+    public void onLoginFailed(Throwable error) {
+        Log.d("MainActivity", "Login failed");
+    }
+
+    @Override
+    public void onTemporaryError() {
+        Log.d("MainActivity", "Temporary error occurred");
+    }
+
+    @Override
+    public void onConnectionMessage(String message) {
+        Log.d("MainActivity", "Received connection message: " + message);
+    }
+
+    @Override
+    public void onPlaybackEvent(EventType eventType, PlayerState playerState) {
+        Log.d("MainActivity", "Playback event received: " + eventType.name());
+        switch (eventType) {
+            // Handle event type as necessary
+            default:
+                break;
+        }
+    }
+
+    @Override
+    public void onPlaybackError(ErrorType errorType, String errorDetails) {
+        Log.d("MainActivity", "Playback error received: " + errorType.name());
+        switch (errorType) {
+            // Handle error type as necessary
+            default:
+                break;
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        // VERY IMPORTANT! This must always be called or else you will leak resources
+        Spotify.destroyPlayer(this);
+        super.onDestroy();
     }
 }
