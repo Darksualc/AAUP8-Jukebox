@@ -1,14 +1,14 @@
 package com.example.sw804f16.jukebox;
 
-        import org.junit.Test;
+import org.junit.Test;
 
-        import java.lang.Exception;
-        import java.lang.String;
+import java.lang.Exception;
+import java.lang.String;
 
-        import static org.junit.Assert.*;
+import static org.junit.Assert.*;
 
-        import com.wrapper.spotify.Api;
-        import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.wrapper.spotify.Api;
+import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 
 /**
  * To work on unit tests, switch the Test Artifact in the Build Variants view.
@@ -27,6 +27,7 @@ public class ConnectionTest {
         String clientId = "8d04022ead4444d0b005d171e5941922";
         String clientSecret = "d9c1e3b5743b435e967c80e2784a528e";
         String redirectUri = "";
+        String code = "";
 
     }
 }
