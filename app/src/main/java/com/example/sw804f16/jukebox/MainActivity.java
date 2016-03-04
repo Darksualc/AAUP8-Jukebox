@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     // Replace with your client ID
     private static final String CLIENT_ID = "8d04022ead4444d0b005d171e5941922";
     // Replace with your redirect URI
-    private static final String REDIRECT_URI = "www.google.com";
+    private static final String REDIRECT_URI = "http://localhost:8888/callback";
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
     public static boolean connectionFlag = false;
@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
                     public void onInitialized(Player player) {
                         player.addConnectionStateCallback(MainActivity.this);
                         player.addPlayerNotificationCallback(MainActivity.this);
-                        player.play("spotify:track:2TpxZ7JUBn3uw46aR7qd6V");
+                        player.play("spotify:track:2SUpC3UgKwLVOS2FtZif9N");
                     }
 
                     @Override
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
     @Override
     public void onLoginFailed(Throwable error) {
-        Log.d("MainActivity", "Login failed");
+        Log.d("MainActivity", "Login failed" + error);
     }
 
     @Override
