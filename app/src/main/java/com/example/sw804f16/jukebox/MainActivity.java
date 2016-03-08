@@ -21,8 +21,6 @@ import com.spotify.sdk.android.player.Player;
 import com.spotify.sdk.android.player.PlayerNotificationCallback;
 import com.spotify.sdk.android.player.PlayerState;
 
-import junit.framework.Assert;
-
 public class MainActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
 
     // Replace with your client ID
@@ -31,7 +29,11 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private static final String REDIRECT_URI = "http://localhost:8888/callback";
     private Player mPlayer;
     private static final int REQUEST_CODE = 1337;
-    public static boolean connectionFlag = false;
+    public boolean connectionFlag = false;
+
+    public boolean isConnectionFlag() {
+        return connectionFlag;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +59,7 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
         AuthenticationClient.openLoginActivity(this, REQUEST_CODE, request);
 
-        if (request != null)
+        if (true)
         {
             connectionFlag = true;
         }

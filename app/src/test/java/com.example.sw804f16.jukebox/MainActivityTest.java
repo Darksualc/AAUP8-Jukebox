@@ -1,5 +1,7 @@
 package com.example.sw804f16.jukebox;
 
+import android.os.Bundle;
+
 import org.junit.Test;
 
 import java.lang.Exception;
@@ -8,22 +10,13 @@ import java.lang.String;
 import static org.junit.Assert.*;
 
 import com.example.sw804f16.jukebox.MainActivity;
-import com.wrapper.spotify.Api;
-import com.wrapper.spotify.models.AuthorizationCodeCredentials;
+import com.spotify.sdk.android.authentication.AuthenticationRequest;
+//import com.wrapper.spotify.Api;
+//import com.wrapper.spotify.models.AuthorizationCodeCredentials;
 
 import junit.framework.Assert;
 
-/**
- * To work on unit tests, switch the Test Artifact in the Build Variants view.
- */
-public class ExampleUnitTest {
-    @Test
-    public void addition_isCorrect() throws Exception {
-        assertEquals(4, 2 + 2);
-    }
-}
-
-public class ConnectionTest {
+public class MainActivityTest {
     @Test
     public void is_Connected() throws Exception {
 
@@ -32,12 +25,12 @@ public class ConnectionTest {
 
         MainActivity main = new MainActivity();
 
-        Assert.assertTrue(main.connectionFlag);
+        Assert.assertTrue(main.isConnectionFlag());
 
     }
 
     protected void SetupTest(){
-        AuthenticationRequest result = new AuthenticationRequest();
+        //AuthenticationRequest result = new AuthenticationRequest();
 
     }
 }
