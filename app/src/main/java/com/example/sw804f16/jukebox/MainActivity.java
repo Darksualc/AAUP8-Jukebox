@@ -39,10 +39,6 @@ import junit.framework.Assert;
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
-
-    public boolean isConnectionFlag(){
-        return isConnectionFlag();
-    }
     // Replace with your client ID
     private static final String CLIENT_ID = "8d04022ead4444d0b005d171e5941922";
     // Replace with your redirect URI
@@ -58,7 +54,9 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private DrawerLayout mDrawerLayout; //Burger menu item
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
 
-
+    public boolean isConnectionFlag(){
+        return connectionFlag;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
