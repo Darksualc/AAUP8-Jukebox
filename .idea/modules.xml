@@ -4,8 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AAUP8-Jukebox.iml" filepath="$PROJECT_DIR$/AAUP8-Jukebox.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/libs/spotify-auth-1.0.0-beta12/spotify-auth-1.0.0-beta12.iml" filepath="$PROJECT_DIR$/app/libs/spotify-auth-1.0.0-beta12/spotify-auth-1.0.0-beta12.iml" />
-      <module fileurl="file://$PROJECT_DIR$/app/libs/spotify-player-1.0.0-beta12/spotify-player-1.0.0-beta12.iml" filepath="$PROJECT_DIR$/app/libs/spotify-player-1.0.0-beta12/spotify-player-1.0.0-beta12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spotify-auth-1.0.0-beta12/spotify-auth-1.0.0-beta12.iml" filepath="$PROJECT_DIR$/spotify-auth-1.0.0-beta12/spotify-auth-1.0.0-beta12.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spotify-player-1.0.0-beta12/spotify-player-1.0.0-beta12.iml" filepath="$PROJECT_DIR$/spotify-player-1.0.0-beta12/spotify-player-1.0.0-beta12.iml" />
     </modules>
   </component>
 </project>
