@@ -40,6 +40,9 @@ import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity implements ConnectionStateCallback, PlayerNotificationCallback {
 
+    public boolean isConnectionFlag(){
+        return isConnectionFlag();
+    }
     // Replace with your client ID
     private static final String CLIENT_ID = "8d04022ead4444d0b005d171e5941922";
     // Replace with your redirect URI
@@ -54,9 +57,6 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
     private ActionBarDrawerToggle mDrawerToggle; //Burger menu item
     private DrawerLayout mDrawerLayout; //Burger menu item
     ArrayList<NavItem> mNavItems = new ArrayList<NavItem>();
-
-
-
 
 
 
@@ -131,6 +131,25 @@ public class MainActivity extends AppCompatActivity implements ConnectionStateCa
 
         //getSupportActionBar().setDisplayHomeAsUpEnabled(true); // Arrow icon
         getSupportActionBar().setLogo(R.mipmap.burger); // or setLogo()
+
+        mDrawerToggle = new ActionBarDrawerToggle(this, mDrawerLayout, R.string.drawer_open, R.string.drawer_close) {
+            @Override
+            public void onDrawerOpened(View drawerView) {
+                super.onDrawerOpened(drawerView);
+
+                invalidateOptionsMenu();
+            }
+
+            @Override
+            public void onDrawerClosed(View drawerView) {
+                super.onDrawerClosed(drawerView);
+                Log.d(TAG, "onDrawerClosed: " + getTitle());
+
+                invalidateOptionsMenu();
+            }
+        };
+
+        mDrawerLayout.setDrawerListener(mDrawerToggle);
     }
 
     @Override
